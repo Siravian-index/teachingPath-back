@@ -6,6 +6,8 @@ const app = createServer()
 describe("ping route", () => {
 
   it("returns pong", async () => {
-    await supertest(app).get("/ping").expect(200)
+    const { statusCode, text } = await supertest(app).get("/ping")
+    expect(statusCode).toBe(200)
+    expect(text).toBe("pong")
   })
 })
